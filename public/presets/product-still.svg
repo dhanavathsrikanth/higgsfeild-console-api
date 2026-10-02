@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="Lime key light on a dark studio still life">
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#1a1a1a"/>
+      <stop offset="0.6" stop-color="#0e0e0e"/>
+      <stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+    <radialGradient id="key" cx="0.62" cy="0.34" r="0.52">
+      <stop offset="0" stop-color="#d1fe17" stop-opacity="0.55"/>
+      <stop offset="0.45" stop-color="#b2d814" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="0.2">
+      <stop offset="0" stop-color="#232323"/>
+      <stop offset="0.55" stop-color="#3e3e3e"/>
+      <stop offset="0.86" stop-color="#8a8f74"/>
+      <stop offset="1" stop-color="#e1fe68"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a4a4a" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.06"/></feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="600" height="800" fill="url(#base)"/>
+  <rect width="600" height="800" fill="url(#key)"/>
+  <ellipse cx="300" cy="672" rx="210" ry="46" fill="url(#floor)" filter="url(#soft)"/>
+  <rect x="196" y="236" width="208" height="404" rx="18" fill="url(#body)"/>
+  <rect x="196" y="236" width="208" height="404" rx="18" fill="#000" fill-opacity="0.18"/>
+  <path d="M404 250 L404 626" stroke="#e1fe68" stroke-width="3" stroke-linecap="round"/>
+  <rect x="196" y="236" width="208" height="404" rx="18" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+  <ellipse cx="300" cy="640" rx="104" ry="14" fill="#d1fe17" fill-opacity="0.18" filter="url(#soft)"/>
+  <circle cx="474" cy="196" r="46" fill="#d1fe17" fill-opacity="0.5" filter="url(#soft)"/>
+  <rect width="600" height="800" filter="url(#grain)"/>
+</svg>
