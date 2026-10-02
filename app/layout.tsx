@@ -26,8 +26,7 @@ const plexMono = IBM_Plex_Mono({
 // The product's own identity.
 export const metadata: Metadata = {
   title: "Product Shots - AI Campaign-ready Hero Shots",
-  description: "Turn a product photo into campaign-ready hero shots. A Marketing Studio preset steers the composition, lighting and styling for you."
-    "Turn a product photo into campaign-ready hero shots. A Marketing Studio preset steers the composition, lighting and styling for you.",
+  description: "Turn a product photo into campaign-ready hero shots. A Marketing Studio preset steers the composition, lighting and styling for you.",
 }
 
 export const viewport: Viewport = { themeColor: "#131416" }

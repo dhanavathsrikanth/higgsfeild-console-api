@@ -520,7 +520,7 @@ export function StudioPromptBox({
   onMediaRemove,
   onMediaRoleChange,
   library,
-  placeholder = "Describe the scene you imagine...",
+  placeholder = "Describe the hero shot you need, or attach a product photo...",
   prompt,
   onPromptChange,
   cost,

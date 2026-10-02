@@ -235,7 +235,7 @@ function FeedState({
                 ? "No generations yet"
                 : `No generations in ${title}`,
             description:
-              "Describe an idea below, or add image, video or audio references, then generate the first result.",
+              "Attach a product photo, describe the campaign shot you want and press Generate. A Marketing Studio preset can steer the composition, lighting and styling.",
           }}
         />
       </div>
@@ -267,7 +267,7 @@ export interface StudioTemplateProps {
 
 export function StudioTemplate({
   title = "Product Shots",
-  headline = "Turn a product photo into campaign-ready hero shots. A Marketing Studio preset steers the composition, lighting and styling for you.",
+  headline = "Turn a product photo into a campaign-ready hero shot.",
 }: StudioTemplateProps) {
   const [view, setView] = useState<StudioView>({ kind: "home" })
   const [collapsed, setCollapsed] = useState(false)

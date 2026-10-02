@@ -65,7 +65,15 @@ const model: ModelEntry = {
   tag: "New",
 }
 
+/** The platform rejects prompts past this; check it here so the dock can show
+    the reason instead of a raw 400. */
+const PROMPT_MAX = 5000
+
 function mapMarketingStudioImage(plane: GenerationPlane): PlatformRequest {
+  if (plane.prompt.text.length > PROMPT_MAX)
+    throw new Error(
+      `Prompt is ${plane.prompt.text.length} characters — Marketing Studio Image accepts up to ${PROMPT_MAX}.`
+    )
   const refs = urls(plane, "reference")
   const base = {
     prompt: plane.prompt.text,

@@ -6,6 +6,8 @@ const UPLOAD_PATH = "/files/generate-upload-url"
 const MODEL_ID = /^[a-z0-9][a-z0-9._/-]*$/i
 const IDEMPOTENCY_KEY = /^[A-Za-z0-9][A-Za-z0-9._:-]{7,127}$/
 const PRESET_PAGE_SIZE = 50
+/** Ceiling on cursor pages followed, so a runaway catalog cannot loop. */
+const PRESET_MAX_PAGES = 8
 
 export type PresetOption = { id: string; name: string }
 
@@ -107,26 +109,42 @@ export function createPlatformClient(options: PlatformClientOptions) {
       )
     },
     /** Marketing Studio's preset catalog. Presets are CMS-managed, so they are
-        fetched per request instead of being pinned as an enum in the catalog. */
+        fetched per request instead of being pinned as an enum in the catalog.
+        The catalog is paginated: `cursor` is followed until the platform stops
+        returning one, so a preset on page two is never dropped. */
     async listPresets(model: string): Promise<PresetOption[]> {
       if (!isModelId(model))
         throw new PlatformError(400, { detail: "Invalid model" })
-      const payload = asRecord(
-        await send("GET", `/${model}/presets?size=${PRESET_PAGE_SIZE}`)
-      )
-      return Array.isArray(payload.items)
-        ? payload.items.flatMap((item): PresetOption[] => {
+      const options: PresetOption[] = []
+      const seen = new Set<string>()
+      let cursor: string | null = null
+      for (let page = 0; page < PRESET_MAX_PAGES; page++) {
+        const query = new URLSearchParams({ size: String(PRESET_PAGE_SIZE) })
+        if (cursor) query.set("cursor", cursor)
+        const payload = asRecord(
+          await send("GET", `/${model}/presets?${query.toString()}`)
+        )
+        if (Array.isArray(payload.items)) {
+          for (const item of payload.items) {
             const record = asRecord(item)
             const id = record.id
-            if (typeof id !== "string" || !id) return []
-            return [
-              {
-                id,
-                name: typeof record.name === "string" ? record.name : id,
-              },
-            ]
-          })
-        : []
+            if (typeof id !== "string" || !id) continue
+            if (seen.has(id)) continue
+            seen.add(id)
+            options.push({
+              id,
+              name: typeof record.name === "string" ? record.name : id,
+            })
+          }
+        }
+        const next =
+          typeof payload.cursor === "string" && payload.cursor
+            ? payload.cursor
+            : null
+        if (!next) break
+        cursor = next
+      }
+      return options
     },
     async submit(
       model: string,

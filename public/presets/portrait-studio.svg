@@ -1,32 +1,85 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="Rim-lit studio portrait silhouette">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="Model silhouette holding the product under a key light">
   <defs>
-    <radialGradient id="base" cx="0.5" cy="0.3" r="0.8">
-      <stop offset="0" stop-color="#232323"/>
-      <stop offset="0.6" stop-color="#0e0e0e"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#232427"/>
+      <stop offset="0.5" stop-color="#131315"/>
       <stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+    <radialGradient id="key" cx="0.7" cy="0.24" r="0.55">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="rim" x1="1" y1="0" x2="0" y2="0.3">
-      <stop offset="0" stop-color="#e1fe68"/>
-      <stop offset="0.4" stop-color="#d1fe17" stop-opacity="0.35"/>
-      <stop offset="1" stop-color="#d1fe17" stop-opacity="0"/>
+    <linearGradient id="fig" x1="0.2" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4a453f"/>
+      <stop offset="1" stop-color="#111111"/>
     </linearGradient>
-    <linearGradient id="fill" x1="0.3" y1="0" x2="0.7" y2="1">
-      <stop offset="0" stop-color="#171717"/>
-      <stop offset="1" stop-color="#000000"/>
+    <linearGradient id="tube" x1="0" y1="0" x2="1" y2="0.3">
+      <stop offset="0" stop-color="#e8e4d9"/>
+      <stop offset="0.5" stop-color="#cdc7b8"/>
+      <stop offset="1" stop-color="#8b8577"/>
     </linearGradient>
-    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="22"/>
+    <linearGradient id="cap" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2a2a2a"/>
+      <stop offset="1" stop-color="#0d0d0d"/>
+    </linearGradient>
+    <radialGradient id="vig" cx="0.5" cy="0.45" r="0.8">
+      <stop offset="0.5" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.42"/>
+    </radialGradient>
+    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="20"/>
     </filter>
     <filter id="grain" x="0" y="0" width="100%" height="100%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" stitchTiles="stitch"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.87" numOctaves="2" stitchTiles="stitch"/>
       <feColorMatrix type="saturate" values="0"/>
-      <feComponentTransfer><feFuncA type="linear" slope="0.07"/></feComponentTransfer>
+      <feComponentTransfer><feFuncA type="linear" slope="0.075"/></feComponentTransfer>
     </filter>
+    <linearGradient id="t1" x1="0" y1="0" x2="1" y2="0.3">
+      <stop offset="0" stop-color="#f2efe6"/>
+      <stop offset="0.5" stop-color="#d8d3c5"/>
+      <stop offset="1" stop-color="#8e887a"/>
+    </linearGradient>
+    <linearGradient id="t2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2a2a2a"/>
+      <stop offset="1" stop-color="#0d0d0d"/>
+    </linearGradient>
+    <linearGradient id="j1" x1="0" y1="0" x2="1" y2="0.4">
+      <stop offset="0" stop-color="#f4f1e8"/>
+      <stop offset="0.5" stop-color="#ded8ca"/>
+      <stop offset="1" stop-color="#a49d8d"/>
+    </linearGradient>
+    <linearGradient id="l1" x1="0" y1="0" x2="1" y2="0.4">
+      <stop offset="0" stop-color="#242424"/>
+      <stop offset="1" stop-color="#0d0d0d"/>
+    </linearGradient>
+    <linearGradient id="b1" x1="0" y1="0" x2="1" y2="0.3">
+      <stop offset="0" stop-color="#f7f4ec"/>
+      <stop offset="0.5" stop-color="#ded8c9"/>
+      <stop offset="1" stop-color="#a49b88"/>
+    </linearGradient>
+    <linearGradient id="p1" x1="0" y1="0" x2="1" y2="0.4">
+      <stop offset="0" stop-color="#2f2f2f"/>
+      <stop offset="1" stop-color="#141414"/>
+    </linearGradient>
   </defs>
-  <rect width="600" height="800" fill="url(#base)"/>
-  <ellipse cx="430" cy="240" rx="190" ry="190" fill="#d1fe17" fill-opacity="0.16" filter="url(#soft)"/>
-  <path d="M300 190 c78 0 128 58 128 140 c0 74 -34 118 -60 142 c46 26 74 66 84 128 l16 92 h-336 l16 -92 c10 -62 38 -102 84 -128 c-26 -24 -60 -68 -60 -142 c0 -82 50 -140 128 -140 z" fill="url(#fill)"/>
-  <path d="M300 190 c78 0 128 58 128 140 c0 74 -34 118 -60 142 c46 26 74 66 84 128 l16 92 h-52 l-14 -86 c-9 -56 -36 -94 -80 -118 c24 -22 56 -64 56 -132 c0 -76 -46 -132 -112 -134 z" fill="url(#rim)"/>
-  <ellipse cx="300" cy="700" rx="180" ry="34" fill="#d1fe17" fill-opacity="0.12" filter="url(#soft)"/>
+
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <rect width="600" height="800" fill="url(#key)"/>
+  <circle cx="246" cy="418" r="45" fill="url(#fig)"/>
+  <path d="M121 800 q0 -178 61 -199 q32 -11 64 0 q61 21 61 199 z" fill="url(#fig)"/>
+  <path d="M295 550 q49 -32 152 -148" stroke="url(#fig)" stroke-width="47" stroke-linecap="round" fill="none"/>
+  <path d="M279 396 a45 45 0 0 1 0 71" stroke="#d1fe17" stroke-width="5" fill="none" stroke-opacity="0.75"/>
+  <ellipse cx="300" cy="774" rx="210" ry="34" fill="#000000" fill-opacity="0.5" filter="url(#soft)"/>
+  <rect x="362.0" y="308" width="112" height="30" rx="7" fill="url(#cap)"/>
+  <rect x="370.0" y="330" width="96" height="210" rx="23" fill="url(#tube)"/>
+  <rect x="389" y="522" width="58" height="44" rx="10" fill="url(#cap)"/>
+  <rect x="370.0" y="330" width="96" height="210" rx="23" fill="#000000" fill-opacity="0.10"/>
+  <rect x="384" y="413" width="68" height="70" rx="6" fill="#f6f2e8" fill-opacity="0.92"/>
+  <rect x="400" y="431" width="36" height="10" rx="5" fill="#1c1c1c" fill-opacity="0.75"/>
+  <rect x="400" y="450" width="22" height="6" rx="3" fill="#1c1c1c" fill-opacity="0.35"/>
+  <circle cx="418" cy="473" r="13" fill="#1c1c1c" fill-opacity="0.6"/>
+  <path d="M466 348 V554" stroke="#d1fe17" stroke-width="4" stroke-linecap="round" stroke-opacity="0.85"/>
+  <ellipse cx="470" cy="566" rx="66" ry="16" fill="#d1fe17" fill-opacity="0.14" filter="url(#soft)"/>
+  <rect width="600" height="800" fill="url(#vig)"/>
   <rect width="600" height="800" filter="url(#grain)"/>
 </svg>

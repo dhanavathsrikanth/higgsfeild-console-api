@@ -1,9 +1,17 @@
-# Higgsfield Studio
+# Product Shots
 
-A creative studio for Higgsfield image and video models. One prompt dock drives
-every installed model: write a prompt or attach image, video and audio
-references, pick a surface and a model, and generate. Results stream into the
-feed and can be grouped into projects.
+Turn a product photo into campaign-ready hero shots. One prompt dock drives
+every installed model: attach a product photo (or write a prompt only), pick a
+surface and a model, and generate. Results stream into the feed and can be
+grouped into projects.
+
+The default starting point is `marketing-studio-image` — the Marketing Studio
+Image model. Its **preset** setting fetches presets live from
+`GET /marketing-studio/image/presets` and, with **Enhance prompt** on, hands the
+prompt plus one or two reference images to a preset so composition, lighting and
+styling are steered for you (the platform then forces `quality: high`).
+Enhance off runs the prompt directly, no reference required. Preset UUIDs are
+never hardcoded.
 
 Image and video surfaces carry equal weight — the model picker lists every
 installed model for the active surface, with no feature filter and no tier

@@ -1,36 +1,79 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="Split first-to-last frame transition with a lime divider">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="Product rising through soft haze with a rim light">
   <defs>
-    <linearGradient id="left" x1="0" y1="0" x2="0.3" y2="1">
-      <stop offset="0" stop-color="#272727"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#101012"/>
+      <stop offset="0.5" stop-color="#0a0a0b"/>
       <stop offset="1" stop-color="#000000"/>
     </linearGradient>
-    <linearGradient id="right" x1="0.2" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#d1fe17"/>
-      <stop offset="0.45" stop-color="#8ead10"/>
-      <stop offset="1" stop-color="#171717"/>
+    <linearGradient id="tube" x1="0" y1="0" x2="1" y2="0.3">
+      <stop offset="0" stop-color="#f2efe6"/>
+      <stop offset="0.5" stop-color="#d7d2c4"/>
+      <stop offset="1" stop-color="#8e887a"/>
     </linearGradient>
-    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#000000" stop-opacity="0.7"/>
-      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    <linearGradient id="cap" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2a2a2a"/>
+      <stop offset="1" stop-color="#0d0d0d"/>
     </linearGradient>
-    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
-      <feGaussianBlur stdDeviation="16"/>
+    <radialGradient id="haze" cx="0.5" cy="0.62" r="0.66">
+      <stop offset="0" stop-color="#d1fe17" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#d1fe17" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vig" cx="0.5" cy="0.5" r="0.8">
+      <stop offset="0.45" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.5"/>
+    </radialGradient>
+    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="26"/>
     </filter>
     <filter id="grain" x="0" y="0" width="100%" height="100%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.87" numOctaves="2" stitchTiles="stitch"/>
       <feColorMatrix type="saturate" values="0"/>
-      <feComponentTransfer><feFuncA type="linear" slope="0.07"/></feComponentTransfer>
+      <feComponentTransfer><feFuncA type="linear" slope="0.075"/></feComponentTransfer>
     </filter>
+    <linearGradient id="t1" x1="0" y1="0" x2="1" y2="0.3">
+      <stop offset="0" stop-color="#f2efe6"/>
+      <stop offset="0.5" stop-color="#d8d3c5"/>
+      <stop offset="1" stop-color="#8e887a"/>
+    </linearGradient>
+    <linearGradient id="t2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2a2a2a"/>
+      <stop offset="1" stop-color="#0d0d0d"/>
+    </linearGradient>
+    <linearGradient id="j1" x1="0" y1="0" x2="1" y2="0.4">
+      <stop offset="0" stop-color="#f4f1e8"/>
+      <stop offset="0.5" stop-color="#ded8ca"/>
+      <stop offset="1" stop-color="#a49d8d"/>
+    </linearGradient>
+    <linearGradient id="l1" x1="0" y1="0" x2="1" y2="0.4">
+      <stop offset="0" stop-color="#242424"/>
+      <stop offset="1" stop-color="#0d0d0d"/>
+    </linearGradient>
+    <linearGradient id="b1" x1="0" y1="0" x2="1" y2="0.3">
+      <stop offset="0" stop-color="#f7f4ec"/>
+      <stop offset="0.5" stop-color="#ded8c9"/>
+      <stop offset="1" stop-color="#a49b88"/>
+    </linearGradient>
+    <linearGradient id="p1" x1="0" y1="0" x2="1" y2="0.4">
+      <stop offset="0" stop-color="#2f2f2f"/>
+      <stop offset="1" stop-color="#141414"/>
+    </linearGradient>
   </defs>
-  <rect width="600" height="800" fill="url(#left)"/>
-  <rect x="300" width="300" height="800" fill="url(#right)"/>
-  <rect x="120" width="220" height="800" fill="url(#fade)"/>
-  <circle cx="196" cy="300" r="72" fill="#4a4a4a" fill-opacity="0.5"/>
-  <circle cx="196" cy="300" r="72" fill="none" stroke="#ededed" stroke-opacity="0.2" stroke-width="2"/>
-  <circle cx="452" cy="520" r="120" fill="#e1fe68" fill-opacity="0.35" filter="url(#glow)"/>
-  <rect x="298" width="4" height="800" fill="#e1fe68"/>
-  <path d="M298 300 L266 372 L298 372 Z" fill="#ffffff"/>
-  <path d="M302 500 L334 428 L302 428 Z" fill="#0e0e0e"/>
-  <rect y="360" width="600" height="2" fill="#ffffff" fill-opacity="0.12"/>
+
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <rect width="600" height="800" fill="url(#haze)"/>
+  <ellipse cx="300" cy="620" rx="230" ry="90" fill="#d1fe17" fill-opacity="0.14" filter="url(#soft)"/>
+  <ellipse cx="300" cy="470" rx="170" ry="70" fill="#ffffff" fill-opacity="0.06" filter="url(#soft)"/>
+  <ellipse cx="300" cy="704" rx="132" ry="26" fill="#000000" fill-opacity="0.55" filter="url(#soft)"/>
+  <rect x="219.0" y="314" width="162" height="30" rx="7" fill="url(#cap)"/>
+  <rect x="227.0" y="336" width="146" height="338" rx="35" fill="url(#tube)"/>
+  <rect x="256" y="656" width="88" height="44" rx="10" fill="url(#cap)"/>
+  <rect x="227.0" y="336" width="146" height="338" rx="35" fill="#000000" fill-opacity="0.10"/>
+  <rect x="241" y="462" width="118" height="108" rx="6" fill="#f6f2e8" fill-opacity="0.92"/>
+  <rect x="257" y="491" width="86" height="10" rx="5" fill="#1c1c1c" fill-opacity="0.75"/>
+  <rect x="257" y="520" width="52" height="6" rx="3" fill="#1c1c1c" fill-opacity="0.35"/>
+  <circle cx="300" cy="556" r="13" fill="#1c1c1c" fill-opacity="0.6"/>
+  <path d="M373 354 V688" stroke="#d1fe17" stroke-width="4" stroke-linecap="round" stroke-opacity="0.85"/>
+  <path d="M0 700 H600" stroke="#d1fe17" stroke-opacity="0.35" stroke-width="2"/>
+  <rect width="600" height="800" fill="url(#vig)"/>
   <rect width="600" height="800" filter="url(#grain)"/>
 </svg>
