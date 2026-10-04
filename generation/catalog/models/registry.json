@@ -11,6 +11,11 @@
       ],
       "files": [
         {
+          "path": "cinema-studio-4.ts",
+          "type": "registry:file",
+          "target": "~/generation/catalog/models/cinema-studio-4.ts"
+        },
+        {
           "path": "dop.ts",
           "type": "registry:file",
           "target": "~/generation/catalog/models/dop.ts"
@@ -154,6 +159,29 @@
           "path": "z-image-turbo.ts",
           "type": "registry:file",
           "target": "~/generation/catalog/models/z-image-turbo.ts"
+        }
+      ]
+    },
+    {
+      "name": "cinema-studio-4",
+      "type": "registry:item",
+      "title": "Cinema Studio 4.0",
+      "description": "Cinema Studio 4.0 video model for Higgsfield app templates. Requires a template item (studio).",
+      "categories": [
+        "model",
+        "video"
+      ],
+      "meta": {
+        "ids": [
+          "cinema-studio-4"
+        ],
+        "surface": "video"
+      },
+      "files": [
+        {
+          "path": "cinema-studio-4.ts",
+          "type": "registry:file",
+          "target": "~/generation/catalog/models/cinema-studio-4.ts"
         }
       ]
     },

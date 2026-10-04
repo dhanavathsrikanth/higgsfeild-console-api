@@ -25,6 +25,9 @@ import type { PresetOption } from "@/generation/platform"
 import type { ModelEntry, SettingField } from "@/generation/catalog/types"
 import { cn } from "@/lib/utils"
 
+/** Sentinel for the unset option; an empty string is not a usable Select value. */
+const AUTO = "auto"
+
 /** Every setting the active model declares, rendered from the catalog. */
 export interface SettingsDialogProps {
   trigger: ReactElement
@@ -122,6 +125,33 @@ function SettingRow({
               <SelectValue />
             </SelectTrigger>
             <SelectContent variant="picker" surface="solid" align="end">
+              {field.values.map((v) => (
+                <SelectItem key={v} value={v}>
+                  {v}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </label>
+        {hint}
+      </div>
+    )
+  }
+  if (field.type === "optional-enum") {
+    const current = typeof value === "string" ? value : ""
+    return (
+      <div className="flex flex-col gap-1">
+        <label className="flex min-h-11 items-center justify-between gap-4 px-1 text-q-body-sm-medium">
+          <span>{label}</span>
+          <Select
+            value={current === "" ? AUTO : current}
+            onValueChange={(v) => onChange(v === AUTO ? "" : v)}
+          >
+            <SelectTrigger size="sm" className="w-auto min-w-32">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent variant="picker" surface="solid" align="end">
+              <SelectItem value={AUTO}>{field.unsetLabel ?? "Auto"}</SelectItem>
               {field.values.map((v) => (
                 <SelectItem key={v} value={v}>
                   {v}

@@ -16,6 +16,13 @@ export function parseSettings(
       out[key] = picked
       continue
     }
+    if (field.type === "optional-enum") {
+      const picked = typeof value === "string" ? value : ""
+      if (picked && !field.values.includes(picked))
+        throw new Error(`Invalid ${key}`)
+      out[key] = picked
+      continue
+    }
     if (field.type === "range") {
       const picked = typeof value === "number" ? value : field.default
       if (picked < field.min || picked > field.max)

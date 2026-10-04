@@ -33,6 +33,14 @@ export type SettingField =
       step?: number
       hint?: string
     }
+  | {
+      /** Enum the platform picks for itself when left unset. Empty string = unset. */
+      type: "optional-enum"
+      values: readonly string[]
+      /** Label for the unset option. */
+      unsetLabel?: string
+      hint?: string
+    }
   | { type: "boolean"; default: boolean; hint?: string }
   | {
       type: "preset"

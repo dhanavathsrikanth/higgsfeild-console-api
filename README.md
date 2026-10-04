@@ -77,7 +77,7 @@ pnpm build
 
 ## Model catalog notes
 
-The catalog ships 9 image and 30 video models. Five endpoint mappings come from
+The catalog ships 9 image and 31 video models. Five endpoint mappings come from
 the platform documentation but have not been confirmed against a live account,
 so treat them as unverified until they are exercised:
 
