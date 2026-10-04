@@ -147,14 +147,14 @@ function SettingRow({
             value={current === "" ? AUTO : current}
             onValueChange={(v) => onChange(v === AUTO ? "" : v)}
           >
-            <SelectTrigger size="sm" className="w-auto min-w-32">
+            <SelectTrigger size="sm" className="w-auto min-w-44">
               <SelectValue />
             </SelectTrigger>
             <SelectContent variant="picker" surface="solid" align="end">
               <SelectItem value={AUTO}>{field.unsetLabel ?? "Auto"}</SelectItem>
               {field.values.map((v) => (
                 <SelectItem key={v} value={v}>
-                  {v}
+                  {field.optionLabels?.[v] ?? v}
                 </SelectItem>
               ))}
             </SelectContent>

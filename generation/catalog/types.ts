@@ -39,6 +39,8 @@ export type SettingField =
       values: readonly string[]
       /** Label for the unset option. */
       unsetLabel?: string
+      /** Readable text per value; missing keys fall back to the raw value. */
+      optionLabels?: Record<string, string>
       hint?: string
     }
   | { type: "boolean"; default: boolean; hint?: string }

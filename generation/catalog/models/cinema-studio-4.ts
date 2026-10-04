@@ -121,6 +121,35 @@ const MAX_VIDEOS = 10
 const MAX_AUDIOS = 10
 
 /**
+ * The platform's direction values are kebab-case slugs (and the palettes are
+ * full film titles), which are unreadable as picker labels. Title-case them for
+ * display; the request body still sends the raw value.
+ */
+function labels(values: readonly string[]): Record<string, string> {
+  return Object.fromEntries(
+    values.map((value) => [
+      value,
+      value
+        .split("-")
+        .map((part) =>
+          /^\d/.test(part) ? part : part.charAt(0).toUpperCase() + part.slice(1)
+        )
+        .join(" "),
+    ])
+  )
+}
+
+/** Readable labels for an optional direction setting. */
+function direction(values: readonly string[]) {
+  return {
+    type: "optional-enum",
+    values,
+    unsetLabel: "Auto",
+    optionLabels: labels(values),
+  } as const
+}
+
+/**
  * Scene-direction settings the platform leaves to its own taste. Each one is
  * catalog key -> request key; unset entries are omitted from the body entirely.
  */
@@ -148,23 +177,15 @@ const model: ModelEntry = {
   roles: { reference: MAX_IMAGES, video: MAX_VIDEOS, audio: MAX_AUDIOS },
   requirePrompt: true,
   settings: {
-    era: { type: "optional-enum", values: ERA, unsetLabel: "Auto" },
-    genre: { type: "optional-enum", values: GENRE, unsetLabel: "Auto" },
-    light: { type: "optional-enum", values: LIGHT, unsetLabel: "Auto" },
-    pacing: { type: "optional-enum", values: PACING, unsetLabel: "Auto" },
-    cameraLens: { type: "optional-enum", values: CAMERA_LENS, unsetLabel: "Auto" },
-    cameraModel: { type: "optional-enum", values: CAMERA_MODEL, unsetLabel: "Auto" },
-    cameraAperture: {
-      type: "optional-enum",
-      values: CAMERA_APERTURE,
-      unsetLabel: "Auto",
-    },
-    cameraMovement: {
-      type: "optional-enum",
-      values: CAMERA_MOVEMENT,
-      unsetLabel: "Auto",
-    },
-    colorPalette: { type: "optional-enum", values: COLOR_PALETTE, unsetLabel: "Auto" },
+    era: direction(ERA),
+    genre: direction(GENRE),
+    light: direction(LIGHT),
+    pacing: direction(PACING),
+    cameraLens: direction(CAMERA_LENS),
+    cameraModel: direction(CAMERA_MODEL),
+    cameraAperture: direction(CAMERA_APERTURE),
+    cameraMovement: direction(CAMERA_MOVEMENT),
+    colorPalette: direction(COLOR_PALETTE),
     aspectRatio: { type: "enum", values: ASPECT, default: "16:9" },
     resolution: { type: "enum", values: RESOLUTION, default: "720p" },
     duration: { type: "range", min: 4, max: 30, default: 5 },
